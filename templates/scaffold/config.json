@@ -1,0 +1,6 @@
+{
+  "account": "<%= account %>",
+  "gas": "<%= gas %>",
+  "link": "<%= link %>",
+  "mnemonic": "<%= mnemonic %>"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "go-boilerplate-ether",
+  "scripts": {
+    "postinstall": "go install"
+  },
+  "dependencies": {
+    "go": "^3.0.0"
+  }
+}
