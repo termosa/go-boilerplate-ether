@@ -1,7 +1,18 @@
 const { join } = require('path')
 
+const parseArguments = json => new Promise((resolve, reject) => {
+  try {
+    resolve(JSON.parse(json))
+  } catch (err) {
+    reject('Can not parse arguments: ', err)
+  }
+})
+
 module.exports = {
   name: 'deploy',
+  options: {
+    arguments: { type: String, alias: ['a', 'args'], default: '[]' }
+  },
   async callback ({ args }) {
     const config = require('../config.json')
     if (!config.account || !config.link || !config.mnemonic) {
@@ -26,7 +37,8 @@ module.exports = {
     const deploy = require('./deploy')
 
     const conn = connect(config.link, config.mnemonic)
-    const contract = deploy(conn, contractName, config.account, config.gas)
+    const arguments = await parseArguments(args.arguments)
+    const contract = deploy(conn, contractName, config.account, config.gas, arguments)
 
     console.log('Contract is deployed to', contract.options.address)
   }

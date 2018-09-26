@@ -4,6 +4,8 @@
     "postinstall": "go install"
   },
   "dependencies": {
+    "clui": "^0.3.6",
+    "cross-spawn": "^6.0.5",
     "go": "^3.0.0"
   }
 }
